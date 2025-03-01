@@ -76,7 +76,7 @@ on:
 jobs:
   build:
     name: Build MT7621 u-boot
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
        fail-fast: False
 
@@ -89,10 +89,10 @@ jobs:
       - name: Install essential packages
         run: |
           sudo apt-get update
-          sudo apt-get install software-properties-common
-          sudo apt-get install swig python3 python3-dev
-          echo 'switch to python3 as default'
-          sudo ln -sf /usr/bin/python3 /usr/bin/python
+          sudo apt-get install swig python2-dev
+          echo 'switch to python2 as default'
+          sudo rm /usr/bin/python
+          sudo ln -s /usr/bin/python2 /usr/bin/python
 
       - name: Download OpenWrt toolchain
         run: |
